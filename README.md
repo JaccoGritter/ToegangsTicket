@@ -7,7 +7,7 @@ Sketch:
 The layout is designed for a touch screen. The museum employee will work from left to right.
 - First choose an age category (other columns will be greyed out)
 - second choose the right price (invalid options will be grayed out)
-- third choose a number of tickets. I have a max of 5.
+- third choose a number of tickets. I have a max of 5 (sketch has 10).
 
 The total price should be updated in the right column.
 
