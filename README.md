@@ -13,10 +13,15 @@ The total price should be updated in the right column.
 
 The user can then add the tickets to the basket or checkout
 
+***
+
 Grid is now clickable
 
 Removed basket - a bit too much for this assignment
 
+JavaScript for calculations added
+
 To do: 
 * Add more CSS styling
-* Add JavaScript for the calculations and responsive styling
+* Add response to "betalen" button
+
