@@ -11,13 +11,37 @@
 
         body {
             background-color: #FBE8A6;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        header {
+            font-size: 2em;
         }
         
-        .mainContainer{
+        .mainContainer {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr); 
             grid-template-rows: repeat(10, 3em);
             grid-gap: 1em 1em;
+        }
+
+        .age {
+            padding: 1em;
+        }
+
+        .price {
+            padding: 1em;
+        }
+
+        .numberOfTickets {
+            padding: 1em;
+            font-size: 1.5em;
+        }
+
+        .checkout {
+            padding: 2em;
+            font-size: 1.2em;
         }
 
         /* Age */
@@ -339,6 +363,13 @@
             toggleQuantityButtons(17);
         });
 
+        $(".item19").click(function(){
+            if(button[18] !=0 ) return;
+            $(".item19").html("PIN of CASH? <br> einde demo");
+            $(".item19").css("background-color", "yellow");
+        });
+
+
         // Build the page with new button values
         function rebuildPage() {
             for (var i=0; i<20; i++) {
@@ -347,7 +378,7 @@
                 if (button[i] == 2) $(".item" + (i+1) ).css("background-color", kleurActief);
             }
 
-            $(".item20").html("Ticketprijs: " + ticketPrijs +"<br><br>Totaal bedrag: <br> EURO: " +  totaalBedrag );
+            $(".item20").html("Ticketprijs: € " + ticketPrijs +"<br><br>Totaal bedrag: € " +  totaalBedrag );
 
         }
 
@@ -364,6 +395,7 @@
         button.fill(1, 4, 20);
 
         ticketPrijs = 0;
+        totaalBedrag = 0;
 
         rebuildPage();
         }
