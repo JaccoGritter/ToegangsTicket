@@ -137,6 +137,11 @@
         var kleurInactief = "#D2FDFF";
         var kleurActief = "#F4976C";
 
+        // define variable for base price, chosen ticket price & total amount
+        var basisPrijs = 20;
+        var ticketPrijs = 0;
+        var totaalBedrag = 0;
+
         setOriginalState();
         
 
@@ -194,7 +199,15 @@
             rebuildPage();
         });
 
-        // functionality for each button - 9 price buttons - *but* item5 will never be clickable 
+        // functionality for each button - 9 price buttons  
+
+        $(".item5").click(function(){
+            if (button[4] != 2) return;
+            ticketPrijs = 0;               // children free admission
+            setOriginalState();
+        });
+
+
         $(".item6").click(function(){
             if (button[5] == 1) return;
             if (button[5] == 2) {
@@ -205,6 +218,7 @@
             button[6] = 1;
             button[7] = 1 ;
             button.fill(0,13,18);
+            ticketPrijs = basisPrijs * 0.7;   // 30% discount teenager
             rebuildPage();
         });
 
@@ -218,6 +232,7 @@
             button[5] = 1;
             button[7] = 1 ;
             button.fill(0,13,18);
+            ticketPrijs = basisPrijs * 0.6;     // 40% discount CJP
             rebuildPage();
         });
 
@@ -231,6 +246,7 @@
             button[5] = 1;
             button[6] = 1 ;
             button.fill(0,13,18);
+            ticketPrijs = basisPrijs * 0.5;      // 50% discount student
             rebuildPage();
         });
 
@@ -244,6 +260,7 @@
             button[9] = 1;
             button[10] = 1 ;
             button.fill(0,13,18);
+            ticketPrijs = basisPrijs;            // no discount
             rebuildPage();
         });
 
@@ -257,6 +274,7 @@
             button[8] = 1;
             button[10] = 1 ;
             button.fill(0,13,18);
+            ticketPrijs = 0;                     // free admission Museumkaart
             rebuildPage();
         });
 
@@ -270,6 +288,7 @@
             button[8] = 1;
             button[9] = 1 ;
             button.fill(0,13,18);
+            ticketPrijs = basisPrijs * 0.5;      // 50% discount student
             rebuildPage();
         });
 
@@ -282,6 +301,7 @@
             button[11] = 2;
             button[12] = 1;
             button.fill(0,13,18);
+            ticketPrijs = basisPrijs * 0.7;      // 30% discount 65+
             rebuildPage();
         });
 
@@ -294,6 +314,7 @@
             button[12] = 2;
             button[11] = 1;
             button.fill(0,13,18);
+            ticketPrijs = 0;                      // free admission Museumkaart
             rebuildPage();
         });
 
@@ -325,6 +346,9 @@
                 if (button[i] == 1) $(".item" + (i+1) ).css("background-color", kleurInactief);
                 if (button[i] == 2) $(".item" + (i+1) ).css("background-color", kleurActief);
             }
+
+            $(".item20").html("Ticketprijs: " + ticketPrijs +"<br><br>Totaal bedrag: <br> EURO: " +  totaalBedrag );
+
         }
 
         // Reset all buttons
@@ -339,6 +363,8 @@
         button.fill(0, 0, 4);
         button.fill(1, 4, 20);
 
+        ticketPrijs = 0;
+
         rebuildPage();
         }
 
@@ -346,11 +372,15 @@
             if (button[choice] == 1) return;
             if (button[choice] == 2) {
                 button.fill(0,13,18);
+                button[18] = 1;
+                totaalBedrag = 0;
                 rebuildPage();
                 return;
             }
             button.fill(1,13,18);
             button[choice] = 2;
+            button[18] = 0;
+            totaalBedrag = ticketPrijs * (choice - 12);
             rebuildPage();
         }
 
@@ -359,6 +389,9 @@
 
 </head>
 <body>
+
+    <header>RIJKSMUSEUM GORILLA - tickets</header>
+
 
     <div class="mainContainer">
     
@@ -370,8 +403,8 @@
 
         <!-- prices & discounts -->
         <div class="price item5">gratis</div>
-        <div class="price item6">CJP kaart <i>gratis</i></div>
-        <div class="price item7">basisprijs <i>-30%</i></div>
+        <div class="price item6">basisprijs <i>-30%</i></div>
+        <div class="price item7">CJP kaart <i>-40%</i></div>
         <div class="price item8">Student <i>-50%</i></div>
         <div class="price item9">basisprijs</div>
         <div class="price item10">Museumkaart <i>gratis</i></div>
