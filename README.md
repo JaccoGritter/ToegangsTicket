@@ -21,7 +21,7 @@ Removed basket - a bit too much for this assignment
 
 JavaScript for calculations added
 
-To do: 
-* Add more CSS styling
-* Add response to "betalen" button
+Added more CSS styling
+Added response to "betalen" button
 
+Possible future update (if time permits): basket!!
